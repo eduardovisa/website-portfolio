@@ -1,9 +1,15 @@
-import './App.css';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <>
-      <div></div>
+      <Navbar
+        children={
+          <section className="hero-section">
+            <div className="hero-info"></div>
+          </section>
+        }
+      />
     </>
   );
 }
