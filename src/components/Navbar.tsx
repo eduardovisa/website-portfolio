@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Container,
-  Divider,
   Drawer,
   IconButton,
   List,
@@ -38,21 +37,8 @@ interface Props {
   children: React.ReactElement;
 }
 
-function ElevationScroll(props: Props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-}
-
 const Navbar = (props: Props) => {
-  const { children, ...rest } = props;
+  const { children } = props;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -62,15 +48,13 @@ const Navbar = (props: Props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Eduardo Visa
-      </Typography>
-      <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.label} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item.label} />
+              <a href={item.url}>
+                <ListItemText primary={item.label} />
+              </a>
             </ListItemButton>
           </ListItem>
         ))}
@@ -78,41 +62,55 @@ const Navbar = (props: Props) => {
     </Box>
   );
 
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
   return (
     <React.Fragment>
-      <ElevationScroll {...rest}>
-        <AppBar style={{ backgroundColor: '#f5f5f5' }}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
-            >
-              <Menu style={{ color: '#444444' }} />
-            </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-            >
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                {navItems.map((item) => (
-                  <a href={item.url}>
-                    <Button
-                      key={item.label}
-                      sx={{ color: '#444444', margin: '1vh' }}
-                    >
-                      <Typography>{item.label}</Typography>
-                    </Button>
-                  </a>
-                ))}
-              </Box>
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
+      <AppBar
+        style={{
+          backgroundColor: trigger ? '#ebebeb' : 'transparent',
+          boxShadow: 'none',
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <Menu style={{ color: '#444444' }} />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          >
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              {navItems.map((item) => (
+                <a href={item.url}>
+                  <Button
+                    key={item.label}
+                    sx={{
+                      color: '#444444',
+                      margin: '1vh',
+                      textTransform: 'capitalize',
+                    }}
+                  >
+                    <Typography sx={{ typography: 'h6' }}>
+                      {item.label}
+                    </Typography>
+                  </Button>
+                </a>
+              ))}
+            </Box>
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Box component="nav">
         <Drawer
           variant="temporary"

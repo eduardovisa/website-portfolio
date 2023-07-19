@@ -3,7 +3,13 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <>
-      <Navbar children={<div></div>} />
+      <Navbar
+        children={
+          <section className="hero-section">
+            <div className="hero-info"></div>
+          </section>
+        }
+      />
     </>
   );
 }
