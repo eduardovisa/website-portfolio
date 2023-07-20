@@ -7,6 +7,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { useState } from 'react';
+import TechList from './gallery';
 
 const experiencias = [
   {
@@ -63,7 +64,7 @@ const AboutMe = () => {
     <section className="about-section" id="sobre-mi">
       <div className="about-info">
         <Grid className="container-about" container>
-          <Grid item xs={12} sm={12} lg={8}>
+          <Grid item xs={12} sm={12} lg={6}>
             <h2>Experiencia Relevante</h2>
             <Timeline
               sx={{
@@ -128,8 +129,9 @@ const AboutMe = () => {
               <p>Ver más</p>
             </Button>
           </Grid>
-          <Grid item xs={12} sm={12} lg={4}>
-            derecha
+          <Grid item xs={12} sm={12} lg={6}>
+            <h2>Tecnologías</h2>
+            <TechList />
           </Grid>
         </Grid>
       </div>

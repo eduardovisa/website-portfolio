@@ -70,7 +70,6 @@ a {
 .info-buttons {
   display: flex;
   justify-content: center;
-  gap: 1vh;
   & Button {
     text-transform: capitalize;
     font-size: medium;
@@ -78,9 +77,10 @@ a {
 }
 
 .izquierda {
-  background-color: #3498db;
+  background-color: rgb(52, 152, 219, 0.5);
   color: #f5f5f5;
   position: relative;
+  border-radius: 10px;
 }
 
 .izquierda-child {
@@ -88,6 +88,9 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: #3498db;
+  padding: 0.5vh;
+  border-radius: 10px;
 }
 
 .img {
@@ -103,6 +106,7 @@ a {
     top: 00%;
     left: 50%;
     transform: translate(-50%, -10%);
+    border-radius: 0px;
   }
   .img {
     display: none;
