@@ -1,10 +1,10 @@
 import { Button } from '@mui/material';
-import { LinkedIn } from '@mui/icons-material';
+import { LinkedIn, GitHub } from '@mui/icons-material';
 import heroImg from '../assets/hero-image.svg';
 
 const Hero = () => {
   return (
-    <section className="hero-section #">
+    <section className="#">
       <div className="hero-info">
         <div className="container">
           <div className="columna izquierda">
@@ -17,11 +17,12 @@ const Hero = () => {
               <p>{`< Desarrollador Web />`}</p>
             </div>
           </div>
-          <div className="columna">
+          <div className="info-section columna">
             <h2 style={{ color: '#1a237e' }}>
               <span style={{ color: '#3498db' }}>¡</span>BIENVENIDO
               <span style={{ color: '#3498db' }}>!</span>
             </h2>
+            <p style={{ fontWeight: 'bold' }}>Un poco sobre mí</p>
             <div className="info-buttons">
               <a
                 href="../files/CV-Eduardo_Miguel_Victoria_Sanchez.pdf"
@@ -37,18 +38,13 @@ const Hero = () => {
               </a>
               <a href="https://github.com/eduardovisa" target="_blank">
                 <Button
-                  variant="outlined"
-                  size="small"
+                  aria-label="GitHub"
+                  size="medium"
                   sx={{
                     borderColor: '#3498db',
-                    borderRadius: 8,
-                    borderWidth: 3,
-                    '&:hover': {
-                      borderWidth: 3,
-                    },
                   }}
                 >
-                  GitHub
+                  <GitHub fontSize="medium" />
                 </Button>
               </a>
               <a
@@ -56,16 +52,10 @@ const Hero = () => {
                 target="_blank"
               >
                 <Button
-                  variant="outlined"
                   aria-label="LinkedIn"
                   size="medium"
                   sx={{
                     borderColor: '#3498db',
-                    borderRadius: 8,
-                    borderWidth: 3,
-                    '&:hover': {
-                      borderWidth: 3,
-                    },
                   }}
                 >
                   <LinkedIn fontSize="medium" />
