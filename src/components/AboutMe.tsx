@@ -60,7 +60,7 @@ const AboutMe = () => {
   const dataForDisplay = show ? experiencias : experiencias.slice(0, 2);
 
   return (
-    <section className="about-section #">
+    <section className="about-section" id="sobre-mi">
       <div className="about-info">
         <Grid className="container-about" container>
           <Grid item xs={12} sm={12} lg={8}>
@@ -123,7 +123,7 @@ const AboutMe = () => {
             <Button
               size="small"
               onClick={() => setShow(true)}
-              sx={{ display: show ? 'none' : 'block' }}
+              sx={{ display: show ? 'none' : 'block', fontWeight: 'bold' }}
             >
               <p>Ver más</p>
             </Button>
