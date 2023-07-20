@@ -51,7 +51,10 @@ const Hero = () => {
                   GitHub
                 </Button>
               </a>
-              <a href="https://github.com/eduardovisa" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/eduardovisa/"
+                target="_blank"
+              >
                 <Button
                   variant="outlined"
                   aria-label="LinkedIn"
