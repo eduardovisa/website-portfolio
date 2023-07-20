@@ -129,7 +129,7 @@ const AboutMe = () => {
               <p>Ver más</p>
             </Button>
           </Grid>
-          <Grid item xs={12} sm={12} lg={6}>
+          <Grid item xs={12} sm={12} lg={6} sx={{ textAlign: 'center' }}>
             <h2>Tecnologías</h2>
             <TechList />
           </Grid>

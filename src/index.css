@@ -97,6 +97,14 @@ a {
   width: 100%;
 }
 
+.divider {
+  display: none;
+}
+
+.divider-projects {
+  display: block;
+}
+
 @media screen and (max-width: 950px) {
   .container {
     flex-direction: column;
@@ -109,6 +117,12 @@ a {
     border-radius: 0px;
   }
   .img {
+    display: none;
+  }
+  .divider {
+    display: block;
+  }
+  .divider-projects {
     display: none;
   }
 }
