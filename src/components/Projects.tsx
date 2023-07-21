@@ -1,26 +1,38 @@
 import { useState } from 'react';
-import { projectsData } from '../data/projects';
-import { ExpandMore, Favorite, MoreVert, Share } from '@mui/icons-material';
+import { projectsData, tagsData } from '../data/projects';
+import { Code, ExpandMore, Language } from '@mui/icons-material';
 import {
-  Avatar,
   Box,
   Card,
   CardActions,
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   Collapse,
   Container,
   Divider,
   Grid,
   IconButton,
   IconButtonProps,
+  Stack,
   Typography,
   styled,
 } from '@mui/material';
+import { TagsDataInterface } from '../data/types';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
+}
+
+function tagColor(tag: string) {
+  const tagValue: TagsDataInterface | undefined = tagsData.find(
+    (tagData) => tagData.id == tag
+  );
+
+  if (tagValue) return tagValue.value;
+
+  return 'white';
 }
 
 const ExpandMoreDetails = styled((props: ExpandMoreProps) => {
@@ -44,12 +56,12 @@ const Projects = () => {
 
   return (
     <section id="proyectos">
-      <div className="divider-projects">
+      <div className="divider-projects" style={{ paddingBottom: '2vh' }}>
         <Divider>
           <Typography variant="h2">Proyectos</Typography>
         </Divider>
       </div>
-      <div className="divider">
+      <div className="divider" style={{ paddingBottom: '2vh' }}>
         <Typography variant="h2">Proyectos</Typography>
       </div>
       <Container maxWidth={false}>
@@ -70,40 +82,51 @@ const Projects = () => {
                 key={`project-card-${index}`}
                 sx={{ textAlign: 'center' }}
               >
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345, bgcolor: 'white' }}>
                   <CardHeader
-                    avatar={
-                      <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">
-                        R
-                      </Avatar>
+                    sx={{ bgcolor: '#94c6e8' }}
+                    subheader={
+                      <Typography fontWeight="bold">{project.name}</Typography>
                     }
-                    action={
-                      <IconButton aria-label="settings">
-                        <MoreVert />
-                      </IconButton>
-                    }
-                    title="Shrimp and Chorizo Paella"
-                    subheader="September 14, 2016"
                   />
                   <CardMedia
+                    sx={{ bgcolor: 'white' }}
                     component="img"
                     height="194"
-                    image="/static/images/cards/paella.jpg"
+                    src={project.img}
                     alt="Paella dish"
                   />
-                  <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                      This impressive paella is a perfect party dish and a fun
-                      meal to cook together with your guests. Add 1 cup of
-                      frozen peas along with the mussels, if you like.
-                    </Typography>
+                  <CardContent sx={{ textAlign: 'left' }}>
+                    <Stack direction="row" spacing={1}>
+                      {project.tags.map((tag: string, index: number) => {
+                        return (
+                          <Chip
+                            key={`chip-tag-${index}`}
+                            label={tag}
+                            sx={{
+                              opacity: '0.8',
+                              backgroundColor: tagColor(tag),
+                              color: 'white',
+                            }}
+                          />
+                        );
+                      })}
+                    </Stack>
                   </CardContent>
                   <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
-                      <Favorite />
+                      {project.url_live && (
+                        <a href={project.url_live} target="_blank">
+                          <Language />
+                        </a>
+                      )}
                     </IconButton>
                     <IconButton aria-label="share">
-                      <Share />
+                      {project.url_code && (
+                        <a href={project.url_code} target="_blank">
+                          <Code />
+                        </a>
+                      )}{' '}
                     </IconButton>
                     <ExpandMoreDetails
                       expand={expandedCardIndex === index}
@@ -119,37 +142,9 @@ const Projects = () => {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <CardContent>
-                      <Typography paragraph>Method:</Typography>
-                      <Typography paragraph>
-                        Heat 1/2 cup of the broth in a pot until simmering, add
-                        saffron and set aside for 10 minutes.
-                      </Typography>
-                      <Typography paragraph>
-                        Heat oil in a (14- to 16-inch) paella pan or a large,
-                        deep skillet over medium-high heat. Add chicken, shrimp
-                        and chorizo, and cook, stirring occasionally until
-                        lightly browned, 6 to 8 minutes. Transfer shrimp to a
-                        large plate and set aside, leaving chicken and chorizo
-                        in the pan. Add pimentón, bay leaves, garlic, tomatoes,
-                        onion, salt and pepper, and cook, stirring often until
-                        thickened and fragrant, about 10 minutes. Add saffron
-                        broth and remaining 4 1/2 cups chicken broth; bring to a
-                        boil.
-                      </Typography>
-                      <Typography paragraph>
-                        Add rice and stir very gently to distribute. Top with
-                        artichokes and peppers, and cook without stirring, until
-                        most of the liquid is absorbed, 15 to 18 minutes. Reduce
-                        heat to medium-low, add reserved shrimp and mussels,
-                        tucking them down into the rice, and cook again without
-                        stirring, until mussels have opened and rice is just
-                        tender, 5 to 7 minutes more. (Discard any mussels that
-                        don&apos;t open.)
-                      </Typography>
-                      <Typography>
-                        Set aside off of the heat to let rest for 10 minutes,
-                        and then serve.
+                    <CardContent sx={{ bgcolor: '#94c6e8' }}>
+                      <Typography paragraph variant="body1">
+                        {project.description}
                       </Typography>
                     </CardContent>
                   </Collapse>
