@@ -21,4 +21,8 @@ export const tagsData: TagsDataInterface[] = [
     id: 'js',
     value: '#CFC35C',
   },
+  {
+    id: 'react',
+    value: '#61dbfb',
+  },
 ];
