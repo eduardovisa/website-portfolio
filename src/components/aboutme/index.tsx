@@ -12,7 +12,7 @@ import TechList from './gallery';
 const experiencias = [
   {
     cargo: 'Desarrollador Web Jr',
-    lugar: 'Premed',
+    lugar: 'Escuela Medicina',
     fecha: 'Diciembre 2022 - Abril 2023',
     actividades: [
       'Desarrollo de plataforma desde cero usando React.js',

@@ -24,10 +24,7 @@ const Hero = () => {
             </h2>
             <p style={{ fontWeight: 'bold' }}>Un poco sobre mí</p>
             <div className="info-buttons">
-              <a
-                href="../files/CV-Eduardo_Miguel_Victoria_Sanchez.pdf"
-                download
-              >
+              <a href="#" download>
                 <Button
                   variant="contained"
                   size="small"
