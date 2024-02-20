@@ -25,4 +25,8 @@ export const tagsData: TagsDataInterface[] = [
     id: 'react',
     value: '#61dbfb',
   },
+  {
+    id: 'tailwind',
+    value: '#38bdf8',
+  },
 ];
